@@ -1,46 +1,24 @@
 import React from 'react';
-import { StyleSheet, Text, Image, SafeAreaView, View} from 'react-native';
-import LoginForm from './src/Components/LoginForm'
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { FontAwesome5, FontAwesome } from "@expo/vector-icons"
+import HomePage from './src/Components/HomePage';
+import MapPage from './src/Components/MapPage';
+
+
+const Main = createStackNavigator();
 
 export default function App() {
-
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Image  style={styles.carLogoImage}
-          source={require('./assets/carlogo.png')}
-        />
-        <Text style={styles.title}>PARK - ON - STREET</Text>
-      </View>
-      <View>
-        <LoginForm/>
-      </View>
-    </SafeAreaView>
-  );
+    <NavigationContainer>
+        <Main.Navigator>
+             <Main.Screen name="Login" component={HomePage} />
+             <Main.Screen name="Map" component={MapPage} />
+        </Main.Navigator>
+    </NavigationContainer>
+  )
 }
 
-const styles = StyleSheet.create({
-  container: {
-    // flex: 1,
-    marginTop: 200,
-    backgroundColor: '#fff',
-  },
 
-  logoContainer:{
-    alignItems: 'center',
-    flexGrow: 1,
-    justifyContent: 'center',
-    flexDirection: 'row',
-    marginBottom: 50,
-  },
 
-  carLogoImage: {
-    width: 70,
-    height: 60,
-  },
 
-  title: {
-    fontWeight: '700'
-    
-  }
-});

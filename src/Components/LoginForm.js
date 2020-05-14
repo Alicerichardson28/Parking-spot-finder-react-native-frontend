@@ -3,6 +3,7 @@ import { View, TextInput, StyleSheet, TouchableOpacity, Text, StatusBar } from '
 
 export class Login extends Component {
     render() {
+        console.log(this.props)
         return (
             <View style={styles.formContainer}>
                 <StatusBar
@@ -27,7 +28,11 @@ export class Login extends Component {
                     ref={(input) => this.passwordInput = input}
                 />
                 <View style={styles.allButtonContainer}>
-                    <TouchableOpacity style={styles.buttonContainer}>
+                    <TouchableOpacity 
+                        style={styles.buttonContainer}
+                        onPress = {() => this.props.navigation.navigate("Map")}
+                    >
+                        
                         <Text style={styles.buttonText}>LOGIN</Text>
                     </TouchableOpacity>
 
@@ -49,20 +54,18 @@ const styles = StyleSheet.create({
     input: {
         alignItems: 'center',
         height: 40,
-        backgroundColor: 'rgba(0,255,0,0.2)',
+        backgroundColor: '#f0f0f0',
         marginBottom: 10,
         color: '#142850',
-        paddingHorizontal: 10
+        paddingHorizontal: 10,
+        borderRadius: 50,
     },
-
-    // allButtonContainer: {
-    //     padding: 30,
-    // },
 
     buttonContainer: {
         backgroundColor: 'rgba(0,255,0,0.4)',
         paddingVertical: 13,
         marginBottom: 10,
+        borderRadius: 50,
     },
 
     buttonText: {
