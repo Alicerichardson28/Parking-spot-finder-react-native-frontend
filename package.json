@@ -8,10 +8,13 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@react-native-community/async-storage": "^1.10.1",
     "@react-native-community/masked-view": "0.1.6",
     "@react-navigation/native": "^5.3.0",
     "@react-navigation/stack": "^5.3.3",
+    "beauty-stars": "^1.1.0",
     "expo": "~37.0.3",
+    "expo-auth-session": "~1.2.1",
     "expo-fontawesome": "^0.1.2",
     "expo-location": "~8.1.0",
     "react": "~16.9.0",
@@ -22,9 +25,11 @@
     "react-native-gesture-handler": "~1.6.0",
     "react-native-google-places-autocomplete": "^1.5.0",
     "react-native-maps": "^0.27.1",
+    "react-native-ratings": "^7.2.0",
     "react-native-reanimated": "~1.7.0",
     "react-native-safe-area-context": "0.7.3",
     "react-native-screens": "~2.2.0",
+    "react-native-star-rating": "^1.1.0",
     "react-native-web": "~0.11.7",
     "react-navigation": "^4.3.9"
   },

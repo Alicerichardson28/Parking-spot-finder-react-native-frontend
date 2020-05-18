@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, Image, SafeAreaView, View, TouchableOpacity} from 'react-native';
+import { StyleSheet, Text, Image, SafeAreaView, View } from 'react-native';
 import LoginForm from './LoginForm'
+
 
 export default function App(props) {
 
@@ -10,7 +11,7 @@ export default function App(props) {
         <Image  style={styles.carLogoImage}
           source={require('../../assets/carlogo.png')}
         />
-        <Text style={styles.title}>PARK - ON - STREET</Text>
+        <Text style={styles.title}>PARKING - SPOT - FINDER</Text>
       </View>
       <View>
         <LoginForm navigation = {props.navigation}/>
@@ -21,7 +22,7 @@ export default function App(props) {
 
 const styles = StyleSheet.create({
   container: {
-    marginTop: 20,
+    height: '100%',
     backgroundColor: '#fff',
   },
 
@@ -30,7 +31,7 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     flexDirection: 'row',
-    marginBottom: 50,
+    // marginBottom: 50,
   },
 
   carLogoImage: {
