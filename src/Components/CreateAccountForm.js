@@ -24,7 +24,7 @@ export default class CreateAccountForm extends Component {
                 // }
                 
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <View style={styles.createFormContainer}>
                 <View style={styles.titleContainer}>
@@ -91,7 +91,7 @@ export default class CreateAccountForm extends Component {
         )
     }
     onSubmit(newUser){
-        this.props.route.params.signUpUsers(newUser)
+        this.props.route.params.signUpUsers(newUser, this.props.navigation)
     }
 }
 

@@ -39,7 +39,7 @@ loginUsers = (user, navigation) => {
   })
 }
 
-signUpUsers = (newUser) => {
+signUpUsers = (newUser, navigation) => {
   this.setState({
     user: {...this.state.user, newUser}
   })
@@ -55,9 +55,15 @@ signUpUsers = (newUser) => {
     },
     body: JSON.stringify(user)
   }).then(res => res.json())
-  .then(console.log)
+  .then(result => {
+    return result
+  })
+  .then((result) => {
+    if(result){
+      navigation.navigate("Login")
+    }
+  })
 }
-
 
   render() {
     // AsyncStorage.getItem('token')
