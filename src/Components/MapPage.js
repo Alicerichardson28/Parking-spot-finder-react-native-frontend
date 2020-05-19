@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet, Image } from "react-native";
 import MapView, {PROVIDER_GOOGLE, Marker} from "react-native-maps";
 import * as Permissions from "expo-permissions";
 import * as Location from "expo-location";
 import { GOOGLE_API_KEY } from 'react-native-dotenv'
+import DisplayLocation from './DisplayLocation'
 
 export default class MapPage extends Component {
   state = {
@@ -45,6 +46,7 @@ export default class MapPage extends Component {
       });
     }
     const location = await Location.getCurrentPositionAsync();
+    console.log(location)
 
     this.setState({
       location,
@@ -53,14 +55,15 @@ export default class MapPage extends Component {
 
   showMarkers = () => {
     return this.state.data.map(data => {
-      return <Marker 
+      return <Marker style={styles.marker} 
         coordinate={{
           latitude: data.geometry.location.lat,
           longitude: data.geometry.location.lng,
         }}
         pinColor = {"blue"} 
-        title={data.name}/>
-        
+        title={data.name}
+        rating={data.rating}
+        vicinity={data.vicinity}/> 
     })
   }
 
@@ -78,8 +81,13 @@ export default class MapPage extends Component {
           }}
           style={styles.mapview}
         > 
-        {this.showMarkers()}
-         </MapView> : <Text>'getting your location'</Text>}
+          {this.showMarkers()}
+         </MapView>:<Image
+            source={require('../../assets/loading1.gif')}
+          />}
+      <View>
+        <DisplayLocation style={styles.displayContainer} data={this.state.data}/>
+      </View>
       </View>
     );
   }
@@ -95,6 +103,9 @@ const styles = StyleSheet.create({
   mapview: {
     flex: 1,
     width: 400,
-    height: 100,
   },
+
+  displayContainer: {
+    height: 1000
+  }
 });
