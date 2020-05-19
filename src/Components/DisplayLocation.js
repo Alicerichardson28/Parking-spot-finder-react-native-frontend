@@ -2,25 +2,21 @@ import React, { Component } from 'react'
 import { View, Text, StyleSheet, Image } from "react-native";
 import StarRating from 'react-native-star-rating';
 
-export default class extends Component {
+export default class DisplayLocation extends Component {
 
 render() {
    const displayText =this.props.data.map(data => 
     <View style={styles.nameTitleContainer}>
        <Text style={styles.nameTitle}>{data.name} </Text>
-       {/* <Text style={styles.ratingTitle}>{data.rating} </Text> */}
-       <View style={styles.ratingContainer}>
             <StarRating 
                 rating ={data.rating}
+                containerStyle ={{width: '20%'}}
                 starSize={12}
-                starStyle={20}
                 fullStarColor={'#f0a500'}
             />
-        </View>
      </View>
     )
-
-        return (
+    return (
             <View style={styles.title}>
                 <View>{displayText}</View>
             </View>
@@ -46,6 +42,5 @@ const styles = StyleSheet.create({
     nameTitle: {
         marginLeft: 15
     },
-
 })
 

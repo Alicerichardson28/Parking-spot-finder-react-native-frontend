@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { View, TextInput, StyleSheet, TouchableOpacity, Text, StatusBar, AsyncStorage } from 'react-native';
 
-const userInfo = {email: 'Paradafaii28@gmail.com', password: '123'}
+
 export class Login extends Component {
 
     state = {
@@ -41,8 +41,7 @@ export class Login extends Component {
                 <View style={styles.allButtonContainer}>
                     <TouchableOpacity 
                         style={styles.buttonContainer}
-                        onPress={this._login}
-                        // onPress = {() => this.props.navigation.navigate("Map")}
+                        onPress = {() => this.onFormSubmit(this.state)}
                     >
                         
                         <Text style={styles.buttonText}>LOGIN</Text>
@@ -58,14 +57,9 @@ export class Login extends Component {
             </View>
         )
     }
-    _login = async() => {
-        if(userInfo.email === this.state.email && userInfo.password === this.state.password ){
-            // alert('Logged In')
-            await AsyncStorage.setItem('isLoggedIn', '1')
-            this.props.navigation.navigate("Map")
-        } else {
-            alert('Username or Password is incorrect')
-        }
+
+    onFormSubmit = (user) => {
+        this.props.loginUsers(user, this.props.navigation)
     }
 }
 

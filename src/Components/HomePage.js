@@ -4,7 +4,7 @@ import LoginForm from './LoginForm'
 
 
 export default function App(props) {
-
+    console.log(props)
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.logoContainer}>
@@ -14,7 +14,7 @@ export default function App(props) {
         <Text style={styles.title}>PARKING - SPOT - FINDER</Text>
       </View>
       <View>
-        <LoginForm navigation = {props.navigation}/>
+        <LoginForm navigation = {props.navigation} loginUsers = {props.route.params.loginUsers}/>
       </View>
     </SafeAreaView>
   );
