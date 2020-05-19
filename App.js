@@ -39,15 +39,35 @@ loginUsers = (user, navigation) => {
   })
 }
 
+signUpUsers = (newUser) => {
+  this.setState({
+    user: {...this.state.user, newUser}
+  })
+
+  const user = {
+    user: newUser
+  }
+
+  fetch(signupUrl,{
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(user)
+  }).then(res => res.json())
+  .then(console.log)
+}
+
+
   render() {
-    AsyncStorage.getItem('token')
-      .then(console.log)
+    // AsyncStorage.getItem('token')
+    //   .then(console.log)
     return (
       <NavigationContainer>
           <Main.Navigator>
               <Main.Screen name="Login" component={HomePage} initialParams={{loginUsers: this.loginUsers}} />
               <Main.Screen name="Map" component={MapPage} />
-              <Main.Screen name="New Account" component={CreateAccountForm} />
+              <Main.Screen name="New Account" component={CreateAccountForm} initialParams={{signUpUsers: this.signUpUsers}}/>
           </Main.Navigator>
       </NavigationContainer>
     )

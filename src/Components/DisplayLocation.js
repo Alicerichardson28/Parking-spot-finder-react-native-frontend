@@ -10,7 +10,7 @@ render() {
        <Text style={styles.nameTitle}>{data.name} </Text>
             <StarRating 
                 rating ={data.rating}
-                containerStyle ={{width: '20%'}}
+                containerStyle ={{width: '20%', marginLeft:15, marginTop: 5}}
                 starSize={12}
                 fullStarColor={'#f0a500'}
             />
