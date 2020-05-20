@@ -10,14 +10,13 @@ export class Login extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <View style={styles.formContainer}>
                 <StatusBar
                     barStyle="light-content"
                 />
                 <TextInput
-                    placeholder="User or Email"
+                    placeholder="Email"
                     placeholderTextColor="#142850"
                     returnKeyType="next"
                     onSubmitEditing={() => this.passwordInput.focus()}

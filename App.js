@@ -15,7 +15,8 @@ const Main = createStackNavigator();
 export default class App extends Component {
 
   state = {
-    user: {}
+    user: {},
+    signUpSuccess: null,
 }
 
 loginUsers = (user, navigation) => {
@@ -39,20 +40,61 @@ loginUsers = (user, navigation) => {
   })
 }
 
+signUpUsers = (newUser, navigation) => {
+  this.setState({
+    user: {...this.state.user, newUser}
+  })
+
+  const user = {
+    user: newUser
+  }
+
+  fetch(signupUrl,{
+    method: 'POST',
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(user)
+  }).then(res => res.json())
+  .then(result => {
+    console.log(result)
+    if(result.id) {
+      this.setState({
+        signUpSuccess: true 
+      });
+      return result
+  }else {
+    this.setState({
+        signUpSuccess: false
+    });
+  }
+  })
+  .then((result) => {
+    setTimeout(() => this.setState({signUpSuccess: null}),2000)
+    if(result){
+      setTimeout(() => navigation.navigate("Login"), 1000)
+    }
+  })
+}
+
   render() {
-    AsyncStorage.getItem('token')
-      .then(console.log)
+    // AsyncStorage.getItem('token')
+    //   .then(console.log)
+    console.log("appState", this.state)
     return (
       <NavigationContainer>
           <Main.Navigator>
               <Main.Screen name="Login" component={HomePage} initialParams={{loginUsers: this.loginUsers}} />
               <Main.Screen name="Map" component={MapPage} />
-              <Main.Screen name="New Account" component={CreateAccountForm} />
+              <Main.Screen name="New Account">
+                  {props => <CreateAccountForm {...props} signUpUsers = {this.signUpUsers} signUpSuccess ={this.state.signUpSuccess}/>}
+              </Main.Screen>
           </Main.Navigator>
       </NavigationContainer>
     )
   }
 }
+
 
 
 

@@ -62,8 +62,7 @@ export default class MapPage extends Component {
         }}
         pinColor = {"blue"} 
         title={data.name}
-        rating={data.rating}
-        vicinity={data.vicinity}/> 
+        /> 
     })
   }
 
