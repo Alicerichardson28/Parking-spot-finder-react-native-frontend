@@ -1,7 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, Image, SafeAreaView, View } from 'react-native';
 import LoginForm from './LoginForm'
-import CreateAccountForm from './CreateAccountForm'
 
 
 export default function App(props) {
@@ -16,7 +15,6 @@ export default function App(props) {
       </View>
       <View>
         <LoginForm navigation = {props.navigation} loginUsers = {props.route.params.loginUsers}/>
-        {/* <CreateAccountForm navigation = {props.navigation} signUpUsers = {props.route.params.signUpUsers}/> */}
       </View>
     </SafeAreaView>
   );
@@ -33,7 +31,6 @@ const styles = StyleSheet.create({
     flexGrow: 1,
     justifyContent: 'center',
     flexDirection: 'row',
-    // marginBottom: 50,
   },
 
   carLogoImage: {

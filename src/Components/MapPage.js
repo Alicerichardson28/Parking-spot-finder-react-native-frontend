@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { View, Text, StyleSheet, Image } from "react-native";
-import MapView, {PROVIDER_GOOGLE, Marker} from "react-native-maps";
+import { View, StyleSheet, Image } from "react-native";
+import MapView, { Marker } from "react-native-maps";
 import * as Permissions from "expo-permissions";
 import * as Location from "expo-location";
 import { GOOGLE_API_KEY } from 'react-native-dotenv'
 import DisplayLocation from './DisplayLocation'
+
 
 export default class MapPage extends Component {
   state = {
@@ -55,14 +56,16 @@ export default class MapPage extends Component {
 
   showMarkers = () => {
     return this.state.data.map(data => {
-      return <Marker style={styles.marker} 
+      return <Marker 
         coordinate={{
           latitude: data.geometry.location.lat,
           longitude: data.geometry.location.lng,
         }}
-        pinColor = {"blue"} 
         title={data.name}
-        /> 
+        >
+        <Image source={require('../../assets/pmarker.png')} style={{height: 50, width:50 }} />
+        </Marker>
+       
     })
   }
 
@@ -106,5 +109,6 @@ const styles = StyleSheet.create({
 
   displayContainer: {
     height: 1000
-  }
+  },
+
 });
