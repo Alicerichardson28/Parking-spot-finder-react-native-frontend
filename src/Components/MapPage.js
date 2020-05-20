@@ -63,7 +63,10 @@ export default class MapPage extends Component {
         }}
         title={data.name}
         >
-        <Image source={require('../../assets/pmarker.png')} style={{height: 50, width:50 }} />
+        <Image 
+          source={require('../../assets/pmarker.png')} 
+          style={{height: 50, width:50 }} 
+        />
         </Marker>
        
     })
@@ -85,7 +88,8 @@ export default class MapPage extends Component {
         > 
           {this.showMarkers()}
          </MapView>:<Image
-            source={require('../../assets/loading1.gif')}
+            source={require('../../assets/loading4.gif')}
+            style={{height: 500, width:500 }}
           />}
       <View>
         <DisplayLocation style={styles.displayContainer} data={this.state.data}/>
