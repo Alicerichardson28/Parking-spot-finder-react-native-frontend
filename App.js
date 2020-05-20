@@ -15,7 +15,8 @@ const Main = createStackNavigator();
 export default class App extends Component {
 
   state = {
-    user: {}
+    user: {},
+    signUpSuccess: null,
 }
 
 loginUsers = (user, navigation) => {
@@ -56,11 +57,22 @@ signUpUsers = (newUser, navigation) => {
     body: JSON.stringify(user)
   }).then(res => res.json())
   .then(result => {
-    return result
+    console.log(result)
+    if(result.id) {
+      this.setState({
+        signUpSuccess: true 
+      });
+      return result
+  }else {
+    this.setState({
+        signUpSuccess: false
+    });
+  }
   })
   .then((result) => {
+    setTimeout(() => this.setState({signUpSuccess: null}),2000)
     if(result){
-      navigation.navigate("Login")
+      setTimeout(() => navigation.navigate("Login"), 1000)
     }
   })
 }
@@ -68,17 +80,21 @@ signUpUsers = (newUser, navigation) => {
   render() {
     // AsyncStorage.getItem('token')
     //   .then(console.log)
+    console.log("appState", this.state)
     return (
       <NavigationContainer>
           <Main.Navigator>
               <Main.Screen name="Login" component={HomePage} initialParams={{loginUsers: this.loginUsers}} />
               <Main.Screen name="Map" component={MapPage} />
-              <Main.Screen name="New Account" component={CreateAccountForm} initialParams={{signUpUsers: this.signUpUsers}}/>
+              <Main.Screen name="New Account">
+                  {props => <CreateAccountForm {...props} signUpUsers = {this.signUpUsers} signUpSuccess ={this.state.signUpSuccess}/>}
+              </Main.Screen>
           </Main.Navigator>
       </NavigationContainer>
     )
   }
 }
+
 
 
 

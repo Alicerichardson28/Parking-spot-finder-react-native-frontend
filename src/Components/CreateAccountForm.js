@@ -8,12 +8,11 @@ export default class CreateAccountForm extends Component {
             email: '',
             password: '',
             firstname: '',
-            lastname: '',
+            lastname: ''
+           
             // emailError: ''
         }
     }
-    
-    
     // emailInput() {
         //     if (this.state.email == "")
         //     {
@@ -22,9 +21,17 @@ export default class CreateAccountForm extends Component {
                 //         this.setState({emailError:''})
                 //     }
                 // }
-                
-    render() {
-        // console.log(this.props)
+
+    signUpAlertMessage() {
+        if (this.props.signUpSuccess){
+            return<Text>Sign up successful</Text>
+            
+        } else { 
+            return<Text>try again</Text>
+        }}
+        
+        render() {
+            console.log(this.props)
         return (
             <View style={styles.createFormContainer}>
                 <View style={styles.titleContainer}>
@@ -83,15 +90,15 @@ export default class CreateAccountForm extends Component {
                         style={styles.buttonContainer}
                         onPress = {() => {this.onSubmit(this.state)}}
                         >
-                        
                         <Text style={styles.buttonText}>Sign Up</Text>
                     </TouchableOpacity>
+                    {this.props.signUpSuccess !== null ? this.signUpAlertMessage() : null}
                 </View>
             </View>
         )
     }
     onSubmit(newUser){
-        this.props.route.params.signUpUsers(newUser, this.props.navigation)
+        this.props.signUpUsers(newUser, this.props.navigation)
     }
 }
 
@@ -124,13 +131,20 @@ const styles = StyleSheet.create({
     },
     createTitle: {
         marginBottom: 30,
-        // fontWeight: "bold",
         fontSize: 25
     },
 
     titleContainer: {
         alignItems: 'center'
     },
+
+    sucessMsg: {
+        color: 'green',
+    },
+
+    errMsg: {
+        color: 'red',
+    }
 
     // emailErrorText: {
     //     color: 'red'
