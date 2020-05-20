@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { View, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity } from "react-native";
 
+
 export default class CreateAccountForm extends Component {
     
     state = {
@@ -9,18 +10,9 @@ export default class CreateAccountForm extends Component {
             password: '',
             firstname: '',
             lastname: ''
-           
-            // emailError: ''
         }
     }
-    // emailInput() {
-        //     if (this.state.email == "")
-        //     {
-            //         this.setState({emailError: "email can't be empty"})
-            //     }else{
-                //         this.setState({emailError:''})
-                //     }
-                // }
+    
 
     signUpAlertMessage() {
         if (this.props.signUpSuccess){
@@ -51,9 +43,7 @@ export default class CreateAccountForm extends Component {
                     style={styles.input}
                     onChangeText={(text) => this.setState({ email: text })}
                     value={this.state.email}
-                    // onBlur={() => this.emailInput()}
                     />
-                {/* <Text style={styles.emailErrorText}>{this.state.emailError}</Text> */}
                 <TextInput
                     placeholder="Password"
                     placeholderTextColor="#142850"
@@ -145,9 +135,4 @@ const styles = StyleSheet.create({
     errMsg: {
         color: 'red',
     }
-
-    // emailErrorText: {
-    //     color: 'red'
-    // }
-
 })
