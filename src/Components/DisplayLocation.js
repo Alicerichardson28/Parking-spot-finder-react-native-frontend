@@ -6,8 +6,6 @@ import StarRating from 'react-native-star-rating';
 
 export default class DisplayLocation extends Component {
 
- 
-
     getDirection = (location) => {
         fetch(`https://www.google.com/maps/search/?api=1&query=${location.lat},${location.lng}`)
             .then(res => 
@@ -42,7 +40,6 @@ export default class DisplayLocation extends Component {
                 </View>
             )
         })
-
 
         return (
             <View style={styles.title}>
