@@ -57,7 +57,6 @@ signUpUsers = (newUser, navigation) => {
     body: JSON.stringify(user)
   }).then(res => res.json())
   .then(result => {
-    console.log(result)
     if(result.id) {
       this.setState({
         signUpSuccess: true 
@@ -80,6 +79,7 @@ signUpUsers = (newUser, navigation) => {
   render() {
     // AsyncStorage.getItem('token')
     //   .then(console.log)
+
     console.log("appState", this.state)
     return (
       <NavigationContainer>
