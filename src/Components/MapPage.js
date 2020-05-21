@@ -7,11 +7,12 @@ import { GOOGLE_API_KEY } from 'react-native-dotenv'
 import DisplayLocation from './DisplayLocation'
 
 
+
 export default class MapPage extends Component {
   state = {
     location: {},
     errorMessage: "",
-    data: [],
+    data: []
   };
 
   componentDidMount = () => {
@@ -67,13 +68,11 @@ export default class MapPage extends Component {
           source={require('../../assets/pmarker.png')} 
           style={{height: 50, width:50 }} 
         />
-        </Marker>
-       
+        </Marker> 
     })
   }
 
   render() {
-      console.log(this.state)
     return (
       <View style={styles.container}>
         {this.state.location.coords ? 
@@ -116,3 +115,5 @@ const styles = StyleSheet.create({
   },
 
 });
+
+
