@@ -23,7 +23,6 @@ export default class CreateAccountForm extends Component {
         }}
         
         render() {
-            console.log(this.state)
         return (
             <SafeAreaView style={styles.createFormContainer}>
                 <View style={styles.titleContainer}>

@@ -72,16 +72,18 @@ export default class MapPage extends Component {
     })
   }
 
-  changeLocation = () => {
+
+  changeLocation = (newLocation) => {
+    this.setState({location: newLocation})
     
   }
 
   render() {
-    console.log(this.state.location)
+    // console.log(this.changeLocation())
     return (
       <View style={styles.container}>
           <View style={{flex: 0.4}}>  
-            <Searchbar/>   
+            <Searchbar changeLocation={this.changeLocation}/>   
           </View>
           {this.state.location.coords ? 
           <View style={{flex: 1}}>
