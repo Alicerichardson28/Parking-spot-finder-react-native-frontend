@@ -1,10 +1,12 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, Text } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import * as Permissions from "expo-permissions";
 import * as Location from "expo-location";
 import { GOOGLE_API_KEY } from 'react-native-dotenv'
 import DisplayLocation from './DisplayLocation'
+import Searchbar from './Searchbar'
+
 
 
 export default class MapPage extends Component {
@@ -73,26 +75,32 @@ export default class MapPage extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
-        {this.state.location.coords ? 
-        <MapView
-        region={{
-          latitude: this.state.location.coords.latitude,
-            longitude: this.state.location.coords.longitude,
-            latitudeDelta: 0.0922,
-            longitudeDelta: 0.0421,
-          }}
-          style={styles.mapview}
-          > 
-          {this.showMarkers()}
-         </MapView>:<Image
-            source={require('../../assets/loading4.gif')}
-            style={{height: 500, width:500 }}
-            />}
-      <View>     
-        <DisplayLocation style={styles.displayContainer} data={this.state.data}/>
-      </View>
-      </View>
+
+        <View style={styles.container}>
+          {this.state.location.coords ? 
+          <MapView
+          region={{
+            latitude: this.state.location.coords.latitude,
+              longitude: this.state.location.coords.longitude,
+              latitudeDelta: 0.0922,
+              longitudeDelta: 0.0421,
+            }}
+            style={styles.mapview}
+            > 
+            {this.showMarkers()}
+          </MapView>:<Image
+              source={require('../../assets/loading4.gif')}
+              style={{height: 500, width:500 }}
+              />}
+        <View>     
+          <DisplayLocation style={styles.displayContainer} data={this.state.data}/>
+        </View>
+        <View>
+          {/* <Text>Hello</Text> */}
+           {/* <Searchbar/> */}
+        </View>
+        </View>
+
     );
   }
 }
