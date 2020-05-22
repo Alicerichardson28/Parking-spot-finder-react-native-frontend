@@ -3,6 +3,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomePage from './src/Components/HomePage';
 import MapPage from './src/Components/MapPage';
+import SearchBar from './src/Components/Searchbar';
 import CreateAccountForm from './src/Components/CreateAccountForm';
 import { AsyncStorage } from 'react-native';
 
@@ -86,6 +87,7 @@ signUpUsers = (newUser, navigation) => {
           <Main.Navigator>
               <Main.Screen name="Login" component={HomePage} initialParams={{loginUsers: this.loginUsers}} />
               <Main.Screen name="Map" component={MapPage} />
+              <Main.Screen name="Search" component={SearchBar}  />
               <Main.Screen name="New Account">
                   {props => <CreateAccountForm {...props} signUpUsers = {this.signUpUsers} signUpSuccess ={this.state.signUpSuccess}/>}
               </Main.Screen>

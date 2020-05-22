@@ -1,6 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, Image, SafeAreaView, View } from 'react-native';
 import LoginForm from './LoginForm'
+import { NavigationContainer } from '@react-navigation/native';
+
 
 
 export default function App(props) {
