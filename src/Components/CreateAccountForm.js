@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity, Image, SafeAreaView,  AsyncStorage } from "react-native";
 
 
 export default class CreateAccountForm extends Component {
@@ -16,18 +16,18 @@ export default class CreateAccountForm extends Component {
 
     signUpAlertMessage() {
         if (this.props.signUpSuccess){
-            return<Text>Sign up successful</Text>
+            return<Text style={styles.successMsg}>Sign up successful</Text>
             
         } else { 
-            return<Text>try again</Text>
+            return<Text style={styles.errMsg}>try again</Text>
         }}
         
         render() {
-            console.log(this.props)
+            console.log(this.state)
         return (
-            <View style={styles.createFormContainer}>
+            <SafeAreaView style={styles.createFormContainer}>
                 <View style={styles.titleContainer}>
-                <Text style={styles.createTitle}>Create Account</Text>
+                <Text style={styles.createTitle}>Register</Text>
                 </View>
                 <StatusBar
                     barStyle="light-content"
@@ -84,7 +84,7 @@ export default class CreateAccountForm extends Component {
                     </TouchableOpacity>
                     {this.props.signUpSuccess !== null ? this.signUpAlertMessage() : null}
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
     onSubmit(newUser){
@@ -94,6 +94,7 @@ export default class CreateAccountForm extends Component {
 
 const styles = StyleSheet.create({
     createFormContainer: {
+        marginTop: 10,
         padding: 30,
         },
 
@@ -104,14 +105,14 @@ const styles = StyleSheet.create({
         marginBottom: 10,
         color: '#142850',
         paddingHorizontal: 10,
-        borderRadius: 50,
+        borderRadius: 10,
     },
 
     buttonContainer: {
         backgroundColor: '#27496d',
         paddingVertical: 13,
         marginBottom: 10,
-        borderRadius: 50,
+        borderRadius: 10,
     },
 
     buttonText: {
@@ -120,6 +121,7 @@ const styles = StyleSheet.create({
         fontWeight: '700',
     },
     createTitle: {
+        marginRight: 240,
         marginBottom: 30,
         fontSize: 25
     },
@@ -128,11 +130,12 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 
-    sucessMsg: {
+    successMsg: {
         color: 'green',
     },
 
     errMsg: {
         color: 'red',
-    }
+    },
+
 })

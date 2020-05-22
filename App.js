@@ -88,7 +88,7 @@ signUpUsers = (newUser, navigation) => {
               <Main.Screen name="Login" component={HomePage} initialParams={{loginUsers: this.loginUsers}} />
               <Main.Screen name="Map" component={MapPage} />
               <Main.Screen name="Search" component={SearchBar}  />
-              <Main.Screen name="New Account">
+              <Main.Screen name="Sign up">
                   {props => <CreateAccountForm {...props} signUpUsers = {this.signUpUsers} signUpSuccess ={this.state.signUpSuccess}/>}
               </Main.Screen>
           </Main.Navigator>

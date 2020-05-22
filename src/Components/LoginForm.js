@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, TextInput, StyleSheet, TouchableOpacity, Text, StatusBar, AsyncStorage } from 'react-native';
+import { View, TextInput, StyleSheet, TouchableOpacity, Text, StatusBar } from 'react-native';
 
 
 export class Login extends Component {
@@ -48,7 +48,7 @@ export class Login extends Component {
 
                     <TouchableOpacity 
                         style={styles.buttonContainer}
-                        onPress = {() => this.props.navigation.navigate("New Account")}
+                        onPress = {() => this.props.navigation.navigate("Sign up")}
                     >
                         <Text style={styles.buttonText}>CREATE AN ACCOUNT</Text>
                     </TouchableOpacity>
@@ -70,18 +70,18 @@ const styles = StyleSheet.create({
     input: {
         alignItems: 'center',
         height: 40,
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#fafafa',
         marginBottom: 10,
         color: '#142850',
         paddingHorizontal: 10,
-        borderRadius: 50,
+        borderRadius: 10,
     },
 
     buttonContainer: {
-        backgroundColor: 'rgba(0,255,0,0.4)',
+        backgroundColor: 'rgba(0,255,0,0.45)',
         paddingVertical: 13,
         marginBottom: 10,
-        borderRadius: 50,
+        borderRadius: 10,
     },
 
     buttonText: {

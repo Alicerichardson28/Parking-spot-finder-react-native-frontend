@@ -5,7 +5,6 @@ import * as Permissions from "expo-permissions";
 import * as Location from "expo-location";
 import { GOOGLE_API_KEY } from 'react-native-dotenv'
 import DisplayLocation from './DisplayLocation'
-import Searchbar from './Searchbar'
 
 
 
@@ -95,10 +94,7 @@ export default class MapPage extends Component {
         <View>     
           <DisplayLocation style={styles.displayContainer} data={this.state.data}/>
         </View>
-        <View>
-          {/* <Text>Hello</Text> */}
-           {/* <Searchbar/> */}
-        </View>
+        
         </View>
 
     );
