@@ -5,7 +5,7 @@ import * as Permissions from "expo-permissions";
 import * as Location from "expo-location";
 import { GOOGLE_API_KEY } from 'react-native-dotenv'
 import DisplayLocation from './DisplayLocation'
-
+import Searchbar from './Searchbar'
 
 
 export default class MapPage extends Component {
@@ -72,31 +72,39 @@ export default class MapPage extends Component {
     })
   }
 
+  changeLocation = () => {
+    
+  }
+
   render() {
+    console.log(this.state.location)
     return (
-
-        <View style={styles.container}>
+      <View style={styles.container}>
+          <View style={{flex: 0.4}}>  
+            <Searchbar/>   
+          </View>
           {this.state.location.coords ? 
-          <MapView
-          region={{
-            latitude: this.state.location.coords.latitude,
-              longitude: this.state.location.coords.longitude,
-              latitudeDelta: 0.0922,
-              longitudeDelta: 0.0421,
-            }}
-            style={styles.mapview}
-            > 
-            {this.showMarkers()}
-          </MapView>:<Image
-              source={require('../../assets/loading4.gif')}
-              style={{height: 500, width:500 }}
-              />}
-        <View>     
-          <DisplayLocation style={styles.displayContainer} data={this.state.data}/>
+          <View style={{flex: 1}}>
+            <MapView
+              region={{
+                latitude: this.state.location.coords.latitude,
+                  longitude: this.state.location.coords.longitude,
+                  latitudeDelta: 0.0922,
+                  longitudeDelta: 0.0421,
+                }}
+                style={styles.mapview}
+                > 
+                {this.showMarkers()}
+              </MapView>
+            </View>
+            :<Image
+                source={require('../../assets/loading4.gif')}
+                style={{height: 500, width:500 }}
+                />}
+          <View>
+            <DisplayLocation style={styles.displayContainer} data={this.state.data}/>
+          </View>
         </View>
-        
-        </View>
-
     );
   }
 }

@@ -80,7 +80,6 @@ signUpUsers = (newUser, navigation) => {
   render() {
     // AsyncStorage.getItem('token')
     //   .then(console.log)
-
     console.log("appState", this.state)
     return (
       <NavigationContainer>

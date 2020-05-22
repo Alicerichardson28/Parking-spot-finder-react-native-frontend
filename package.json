@@ -19,6 +19,7 @@
     "beauty-stars": "^1.1.0",
     "expo": "~37.0.3",
     "expo-auth-session": "~1.2.1",
+    "expo-constants": "~9.0.0",
     "expo-fontawesome": "^0.1.2",
     "expo-location": "~8.1.0",
     "react": "~16.9.0",
