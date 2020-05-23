@@ -32,7 +32,7 @@ export default class CreateAccountForm extends Component {
                     barStyle="light-content"
                     />
                 <TextInput
-                    placeholder="Email"
+                    placeholder="Username or email"
                     placeholderTextColor="#142850"
                     returnKeyType="next"
                     onSubmitEditing={() => this.passwordInput.focus()}

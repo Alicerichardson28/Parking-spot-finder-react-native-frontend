@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { View, StyleSheet, Image, Text } from "react-native";
+import { View, StyleSheet, Image } from "react-native";
 import MapView, { Marker } from "react-native-maps";
 import * as Permissions from "expo-permissions";
 import * as Location from "expo-location";
@@ -79,34 +79,33 @@ export default class MapPage extends Component {
   }
 
   render() {
-    // console.log(this.changeLocation())
     return (
-      <View style={styles.container}>
-          <View style={{flex: 0.4}}>  
-            <Searchbar changeLocation={this.changeLocation}/>   
-          </View>
-          {this.state.location.coords ? 
-          <View style={{flex: 1}}>
-            <MapView
-              region={{
-                latitude: this.state.location.coords.latitude,
-                  longitude: this.state.location.coords.longitude,
-                  latitudeDelta: 0.0922,
-                  longitudeDelta: 0.0421,
-                }}
-                style={styles.mapview}
-                > 
-                {this.showMarkers()}
-              </MapView>
+        <View style={styles.container}>
+            <View style={{flex: 0.4}}>  
+              <Searchbar changeLocation={this.changeLocation}/>   
             </View>
-            :<Image
-                source={require('../../assets/loading4.gif')}
-                style={{height: 500, width:500 }}
-                />}
-          <View>
-            <DisplayLocation style={styles.displayContainer} data={this.state.data}/>
+            {this.state.location.coords ? 
+            <View style={{flex: 1}}>
+              <MapView
+                region={{
+                  latitude: this.state.location.coords.latitude,
+                    longitude: this.state.location.coords.longitude,
+                    latitudeDelta: 0.0922,
+                    longitudeDelta: 0.0421,
+                  }}
+                  style={styles.mapview}
+                  > 
+                  {this.showMarkers()}
+                </MapView>
+              </View>
+              :<Image
+                  source={require('../../assets/loading4.gif')}
+                  style={{height: 500, width:500 }}
+                  />}
+            <View>
+              <DisplayLocation style={styles.displayContainer} data={this.state.data}/>
+            </View>
           </View>
-        </View>
     );
   }
 }
