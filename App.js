@@ -5,13 +5,15 @@ import HomePage from './src/Components/HomePage';
 import MapPage from './src/Components/MapPage';
 import SearchBar from './src/Components/Searchbar';
 import CreateAccountForm from './src/Components/CreateAccountForm';
-import { AsyncStorage } from 'react-native';
+import { AsyncStorage, Dimensions } from 'react-native';
 
 
 const signupUrl = 'https://parking-spot-finder-backend.herokuapp.com/users'
 const loginUrl = 'https://parking-spot-finder-backend.herokuapp.com/login'
 
 const Main = createStackNavigator();
+const Menu = createStackNavigator();
+
 
 export default class App extends Component {
 
@@ -84,13 +86,20 @@ signUpUsers = (newUser, navigation) => {
     return (
       <NavigationContainer>
           <Main.Navigator>
-              <Main.Screen name="Login" component={HomePage} initialParams={{loginUsers: this.loginUsers}} />
+              <Main.Screen name="Login" component={HomePage} initialParams={{loginUsers: this.loginUsers}} 
+              />
               <Main.Screen name="Map" component={MapPage} />
-              <Main.Screen name="Search" component={SearchBar}  />
+              <Main.Screen name="Search" component={SearchBar}/>
               <Main.Screen name="Sign up">
                   {props => <CreateAccountForm {...props} signUpUsers = {this.signUpUsers} signUpSuccess ={this.state.signUpSuccess}/>}
               </Main.Screen>
           </Main.Navigator>
+          {/* <Menu.navigate>
+            <Menu.Screen name="Profile"/>
+            <Menu.Screen name="Rate Us"/>
+            <Menu.Screen name="Help"/>
+            <Menu.Screen name="Logout"/>
+          </Menu.navigate> */}
       </NavigationContainer>
     )
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, Image, SafeAreaView, View, ImageBackground } from 'react-native';
+import { StyleSheet, Text, Image, SafeAreaView, View } from 'react-native';
 import LoginForm from './LoginForm'
 
 

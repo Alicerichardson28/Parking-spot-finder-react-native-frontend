@@ -80,32 +80,33 @@ export default class MapPage extends Component {
 
   render() {
     return (
-        <View style={styles.container}>
-            <View style={{flex: 0.4}}>  
-              <Searchbar changeLocation={this.changeLocation}/>   
-            </View>
-            {this.state.location.coords ? 
-            <View style={{flex: 1}}>
-              <MapView
-                region={{
-                  latitude: this.state.location.coords.latitude,
-                    longitude: this.state.location.coords.longitude,
-                    latitudeDelta: 0.0922,
-                    longitudeDelta: 0.0421,
-                  }}
-                  style={styles.mapview}
-                  > 
-                  {this.showMarkers()}
-                </MapView>
-              </View>
-              :<Image
-                  source={require('../../assets/loading4.gif')}
-                  style={{height: 500, width:500 }}
-                  />}
-            <View>
-              <DisplayLocation style={styles.displayContainer} data={this.state.data}/>
-            </View>
+      <View style={styles.container}>
+          <View style={{flex: 0.4}}>  
+            <Searchbar changeLocation={this.changeLocation}/>   
           </View>
+       
+        {this.state.location.coords ? 
+        <View style={{flex: 1}}>
+          <MapView
+            region={{
+              latitude: this.state.location.coords.latitude,
+                longitude: this.state.location.coords.longitude,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}
+              style={styles.mapview}
+              > 
+              {this.showMarkers()}
+            </MapView>
+          </View>
+          :<Image
+              source={require('../../assets/loading4.gif')}
+              style={{height: 500, width:500 }}
+          />}
+        <View style={{flex: 1}}>
+          <DisplayLocation style={styles.displayContainer} data={this.state.data}/>
+        </View>
+      </View>
     );
   }
 }
@@ -122,10 +123,12 @@ const styles = StyleSheet.create({
   mapview: {
     flex: 1,
     width: 400,
+    height: 400,
   },
-
+  
   displayContainer: {
-    height: 1000
+    
+    height: 1000,
   },
 
 });
