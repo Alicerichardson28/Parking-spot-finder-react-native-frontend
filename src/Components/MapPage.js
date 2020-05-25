@@ -81,10 +81,9 @@ export default class MapPage extends Component {
   render() {
     return (
       <View style={styles.container}>
-          <View style={{flex: 0.4}}>  
-            <Searchbar changeLocation={this.changeLocation}/>   
-          </View>
-       
+        <View style={{flex: 0.4}}>  
+          <Searchbar changeLocation={this.changeLocation}/>   
+        </View>
         {this.state.location.coords ? 
         <View style={{flex: 1}}>
           <MapView
@@ -127,7 +126,6 @@ const styles = StyleSheet.create({
   },
   
   displayContainer: {
-    
     height: 1000,
   },
 
