@@ -25,8 +25,11 @@ export default class CreateAccountForm extends Component {
         render() {
         return (
             <SafeAreaView style={styles.createFormContainer}>
+                <Image style= { styles.backgroundImage }
+                    source={require('../../assets/bgsignup3.jpg')}
+                />
                 <View style={styles.titleContainer}>
-                <Text style={styles.createTitle}>Register</Text>
+                    <Text style={styles.createTitle}>REGISTER</Text>
                 </View>
                 <StatusBar
                     barStyle="light-content"
@@ -93,14 +96,14 @@ export default class CreateAccountForm extends Component {
 
 const styles = StyleSheet.create({
     createFormContainer: {
-        marginTop: 10,
+        marginTop: 100,
         padding: 30,
-        },
+    },
 
     input: {
         alignItems: 'center',
         height: 40,
-        backgroundColor: 'rgba(0,255,0,0.2)',
+        backgroundColor: '#ffffff',
         marginBottom: 10,
         color: '#142850',
         paddingHorizontal: 10,
@@ -120,8 +123,10 @@ const styles = StyleSheet.create({
         fontWeight: '700',
     },
     createTitle: {
-        marginRight: 240,
+        fontWeight: '700',
+        color: '#142850',
         marginBottom: 30,
+        textAlign: 'center',
         fontSize: 25
     },
 
@@ -135,6 +140,14 @@ const styles = StyleSheet.create({
 
     errMsg: {
         color: 'red',
+    },
+
+    backgroundImage:{
+        position: 'absolute',
+        width: 400,
+        height: '150%',
+        alignItems: 'center',
+        opacity: 0.5
     },
 
 })
