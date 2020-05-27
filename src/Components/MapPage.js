@@ -87,7 +87,7 @@ export default class MapPage extends Component {
           <Searchbar changeLocation={this.changeLocation}/>   
         </View>
         {this.state.location.coords ? 
-        <View style={{flex: 1}}>
+        <View style={{flex: 1, marginTop: 30}}>
           <MapView
             region={{
               latitude: this.state.location.coords.latitude,
