@@ -14,9 +14,9 @@ export default class DisplayLocation extends Component {
     }
 
     render() {
-        const displayText =this.props.data.map(data => {
+        const displayText =this.props.data.map((data, index) => {
             return(
-                <View style={styles.mainContainer}>
+                <View key={index} style={styles.mainContainer}>
                     <View style={styles.leftContainer}>
                         <Text style={styles.nameTitle}>{data.name}</Text>
                         <StarRating 

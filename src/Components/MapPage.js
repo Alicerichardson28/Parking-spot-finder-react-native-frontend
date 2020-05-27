@@ -6,6 +6,7 @@ import * as Location from "expo-location";
 import { GOOGLE_API_KEY } from 'react-native-dotenv'
 import DisplayLocation from './DisplayLocation'
 import Searchbar from './Searchbar'
+import HamburgerMenu from './HamburgerMenu'
 
 
 export default class MapPage extends Component {
@@ -56,12 +57,13 @@ export default class MapPage extends Component {
   };
 
   showMarkers = () => {
-    return this.state.data.map(data => {
+    return this.state.data.map((data) => {
       return <Marker 
         coordinate={{
           latitude: data.geometry.location.lat,
           longitude: data.geometry.location.lng,
         }}
+        key={data.id}
         title={data.name}
         >
         <Image 
@@ -103,7 +105,7 @@ export default class MapPage extends Component {
               style={{height: 500, width:500 }}
           />}
         <View style={{flex: 1}}>
-          <DisplayLocation style={styles.displayContainer} data={this.state.data}/>
+          <DisplayLocation key={this.state.data.id} style={styles.displayContainer} data={this.state.data}/>
         </View>
       </View>
     );
