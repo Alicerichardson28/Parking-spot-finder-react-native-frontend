@@ -6,7 +6,7 @@ import * as Location from "expo-location";
 import { GOOGLE_API_KEY } from 'react-native-dotenv'
 import DisplayLocation from './DisplayLocation'
 import Searchbar from './Searchbar'
-
+import HamburgerMenu from './HamburgerMenu'
 
 
 export default class MapPage extends Component {
@@ -57,12 +57,13 @@ export default class MapPage extends Component {
   };
 
   showMarkers = () => {
-    return this.state.data.map(data => {
+    return this.state.data.map((data) => {
       return <Marker 
         coordinate={{
           latitude: data.geometry.location.lat,
           longitude: data.geometry.location.lng,
         }}
+        key={data.id}
         title={data.name}
         >
         <Image 
@@ -73,9 +74,40 @@ export default class MapPage extends Component {
     })
   }
 
+
+  changeLocation = (newLocation) => {
+    this.setState({location: newLocation})
+    
+  }
+
   render() {
     return (
-
+      <View style={styles.container}>
+        <View style={{flex: 0.4}}>  
+          <Searchbar changeLocation={this.changeLocation}/>   
+        </View>
+        {this.state.location.coords ? 
+        <View style={{flex: 1, marginTop: 30}}>
+          <MapView
+            region={{
+              latitude: this.state.location.coords.latitude,
+                longitude: this.state.location.coords.longitude,
+                latitudeDelta: 0.0922,
+                longitudeDelta: 0.0421,
+              }}
+              style={styles.mapview}
+              > 
+              {this.showMarkers()}
+            </MapView>
+          </View>
+          :<Image
+              source={require('../../assets/loading4.gif')}
+              style={{height: 500, width:500 }}
+          />}
+        <View style={{flex: 1}}>
+          <DisplayLocation key={this.state.data.id} style={styles.displayContainer} data={this.state.data}/>
+        </View>
+      </View>
         <View style={styles.container}>
           {this.state.location.coords ? 
           <MapView
@@ -100,7 +132,6 @@ export default class MapPage extends Component {
            {/* <Searchbar/> */}
         </View>
         </View>
-
     );
   }
 }
@@ -117,10 +148,11 @@ const styles = StyleSheet.create({
   mapview: {
     flex: 1,
     width: 400,
+    height: 400,
   },
-
+  
   displayContainer: {
-    height: 1000
+    height: 1000,
   },
 
 });

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { View, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity } from "react-native";
+import { View, Text, StyleSheet, StatusBar, TextInput, TouchableOpacity, Image, SafeAreaView,  AsyncStorage } from "react-native";
 
 
 export default class CreateAccountForm extends Component {
@@ -16,24 +16,26 @@ export default class CreateAccountForm extends Component {
 
     signUpAlertMessage() {
         if (this.props.signUpSuccess){
-            return<Text>Sign up successful</Text>
+            return<Text style={styles.successMsg}>Sign up successful</Text>
             
         } else { 
-            return<Text>try again</Text>
+            return<Text style={styles.errMsg}>try again</Text>
         }}
         
         render() {
-            console.log(this.props)
         return (
-            <View style={styles.createFormContainer}>
+            <SafeAreaView style={styles.createFormContainer}>
+                <Image style= { styles.backgroundImage }
+                    source={require('../../assets/bgsignup3.jpg')}
+                /> 
                 <View style={styles.titleContainer}>
-                <Text style={styles.createTitle}>Create Account</Text>
+                    <Text style={styles.createTitle}>REGISTER</Text>
                 </View>
                 <StatusBar
                     barStyle="light-content"
                     />
                 <TextInput
-                    placeholder="Email"
+                    placeholder="Username or email"
                     placeholderTextColor="#142850"
                     returnKeyType="next"
                     onSubmitEditing={() => this.passwordInput.focus()}
@@ -84,7 +86,7 @@ export default class CreateAccountForm extends Component {
                     </TouchableOpacity>
                     {this.props.signUpSuccess !== null ? this.signUpAlertMessage() : null}
                 </View>
-            </View>
+            </SafeAreaView>
         )
     }
     onSubmit(newUser){
@@ -95,23 +97,24 @@ export default class CreateAccountForm extends Component {
 const styles = StyleSheet.create({
     createFormContainer: {
         padding: 30,
-        },
+        flex: 1
+    },
 
     input: {
         alignItems: 'center',
         height: 40,
-        backgroundColor: 'rgba(0,255,0,0.2)',
+        backgroundColor: '#ffffff',
         marginBottom: 10,
         color: '#142850',
         paddingHorizontal: 10,
-        borderRadius: 50,
+        borderRadius: 10,
     },
 
     buttonContainer: {
         backgroundColor: '#27496d',
         paddingVertical: 13,
         marginBottom: 10,
-        borderRadius: 50,
+        borderRadius: 10,
     },
 
     buttonText: {
@@ -120,7 +123,10 @@ const styles = StyleSheet.create({
         fontWeight: '700',
     },
     createTitle: {
+        fontWeight: '500',
+        color: '#142850',
         marginBottom: 30,
+        textAlign: 'center',
         fontSize: 25
     },
 
@@ -128,11 +134,19 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
 
-    sucessMsg: {
+    successMsg: {
         color: 'green',
     },
 
     errMsg: {
         color: 'red',
-    }
+    },
+
+    backgroundImage:{
+        position: 'absolute',
+        width: 400,
+        height: '150%',
+        alignItems: 'center',
+        opacity: 0.3
+    },
 })
