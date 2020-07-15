@@ -56,6 +56,7 @@ export default class Searchbar extends Component {
                             color: '#1faadb',  
                         }                    
                     }}
+                />
         )
     }
 }
