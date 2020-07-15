@@ -121,26 +121,24 @@ logout = () => {
     return (
       <NavigationContainer>
           <Main.Navigator>
-
               <Main.Screen name="Login" component={HomePage} initialParams={{loginUsers: this.loginUsers}} 
               />
               <Main.Screen name="Map" component={MapPage}/>
               <Main.Screen name="Search" component={SearchBar}/>
               <Main.Screen name="Logout" component={HomePage} logout = {this.logout}/>
-              <Main.Screen name="Sign up">
-
+              <Main.Screen name="Sign up"/>
               <Main.Screen name="Login" component={HomePage} initialParams={{loginUsers: this.loginUsers}} />
               <Main.Screen name="Map" component={MapPage} />
               <Main.Screen name="Search" component={SearchBar}  />
               <Main.Screen name="New Account">
-
                   {props => <CreateAccountForm {...props} signUpUsers = {this.signUpUsers} signUpSuccess ={this.state.signUpSuccess}/>}
               </Main.Screen>
-          </Main.Navigator> 
+          </Main.Navigator>
       </NavigationContainer>
     )
   }
 }
+
 
 
 
